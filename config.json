@@ -1,0 +1,41 @@
+{
+    "input_path": "./input", 
+    "output_path": "./output",
+    "model_path": "pretrained_models/human_face_detection.pt",
+    "input_size": [1280, 768, 3],
+    "iou_threshold": 0.5,
+    "device": "gpu:0",
+    "objects": {
+        "human": {
+            "conf_threshold": 0.5,
+            "classification": null
+        },
+        "human head": {
+            "conf_threshold": 0.3,
+            "classification": {
+                "model_path": "pretrained_models/gender_classification",
+                "input_size": [75, 75, 3],
+                "label": ["boy", "girl", "unknown_gender"],
+                "device": "gpu:0"
+            }
+        },
+        "human upper body": {
+            "conf_threshold": 0.3,
+            "classification": {
+                "model_path": "pretrained_models/wear_coat_classification",
+                "input_size": [100, 75, 3],
+                "label": ["with coat", "without coat", "unknown_coat"],
+                "device": "gpu:0"
+            }
+        }
+    },
+    "label_colors": {
+        "human": [255, 0, 0],
+        "boy": [0, 255, 0],
+        "girl": [128, 255, 0],
+        "unknown_gender": [128, 255, 128],
+        "with coat": [255, 255, 128],
+        "without coat": [255, 128, 255],
+        "unknown_coat": [0, 255, 255]
+    }
+}
